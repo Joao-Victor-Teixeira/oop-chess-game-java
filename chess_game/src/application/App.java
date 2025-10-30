@@ -17,8 +17,7 @@ public class App {
         List<ChessPiece> captured = new ArrayList<>();
 
         while (!chessMatch.getCheckMate()) {
-            
-            
+                  
             try{
                 UI.clearScreen();
                 UI.printMatch(chessMatch, captured);
@@ -36,7 +35,7 @@ public class App {
                 ChessPosition target = UI.readChessPosition(sc);
 
                 ChessPiece capturedPiece = chessMatch.perfotmChessMove(source, target);
-                // Só adiciona à lista de capturadas se realmente houve uma peça capturada
+                // Só adiciona à lista de capturadas se realmente houve uma peça capturada(Quase uma hora pra achar esse erro)
                 if (capturedPiece != null) {
                     captured.add(capturedPiece);
                 }
@@ -48,8 +47,7 @@ public class App {
              catch (InputMismatchException e){
                 System.out.println(e.getMessage());
                 sc.nextLine();
-            }
-        
+            }        
         } 
         UI.clearScreen();
         UI.printMatch(chessMatch, captured);
