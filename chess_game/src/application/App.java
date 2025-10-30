@@ -16,7 +16,7 @@ public class App {
         ChessMatch chessMatch = new ChessMatch();
         List<ChessPiece> captured = new ArrayList<>();
 
-        while (true) {
+        while (!chessMatch.getCheckMate()) {
             
             
             try{
@@ -29,14 +29,15 @@ public class App {
                 boolean[][] possibleMoves = chessMatch.possibleMoves(source);
                 UI.clearScreen();
                 UI.printBoard(chessMatch.getpieces(), possibleMoves);
-                    
 
+    
                 System.out.println();
                 System.out.print("Destino: ");
                 ChessPosition target = UI.readChessPosition(sc);
 
                 ChessPiece capturedPiece = chessMatch.perfotmChessMove(source, target);
-                if (captured != null) {
+                // Só adiciona à lista de capturadas se realmente houve uma peça capturada
+                if (capturedPiece != null) {
                     captured.add(capturedPiece);
                 }
             }
@@ -50,5 +51,7 @@ public class App {
             }
         
         } 
+        UI.clearScreen();
+        UI.printMatch(chessMatch, captured);
     }
 }
