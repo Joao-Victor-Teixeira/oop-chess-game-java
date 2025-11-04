@@ -63,3 +63,4 @@ public class App {
         UI.printMatch(chessMatch, captured);
     }
 }
+
